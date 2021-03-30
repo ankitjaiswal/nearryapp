@@ -106,8 +106,11 @@ class FindCommand extends Command
         foreach ($output as $fullKey => $values) {
             list($fileName, $key) = explode('.', $fullKey, 2);
 
-            $original = [];
-
+//            $original = [];
+            $original[$languageKey] =
+                $filesContent[$fileName][$languageKey][$key]
+                ?? $values[$languageKey]
+                ?? '';
             foreach ($allLanguages as $languageKey) {
                 $original[$languageKey] =
                     isset($values[$languageKey])
